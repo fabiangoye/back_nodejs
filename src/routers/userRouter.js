@@ -15,6 +15,13 @@ const { Router } = require('express');//constante representando express, {Router
                  [{name:'Fabian', lastname:'Goyeneche'}, 
                  {name:'Ava', lastname:'Addams'}]);      
          });
+
+         this.router.post('/users', (req, res) =>{// un post recibe datos el servidor, el usuario envía datos
+            let {name, lastname, email} = req.body;// desestructuración {}
+            console.log("name: ", name);
+            console.table(req.body);
+            res.status(201).json({message: 'user created'}); //respuesta al cliente, acá finaliza el proceso, el response es como el return de una función
+         })
      }
  }
 
