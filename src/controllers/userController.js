@@ -13,7 +13,7 @@ class UserController {
                     res.status(500).json({ info: 'Error de inserción' })
                 } else {
                     console.log(doc);
-                    let token = jwt.sign("" + doc._id, 'fabiangoyenechecs');//el primer parámetro es el payload y el segundo es la clave secreta
+                    let token = jwt.sign(`${doc._id}`, process.env.NODE_PRIVATE_KEY);//el primer parámetro es el payload y el segundo es la clave secreta. `${doc._id}`CON ESTO doc._id TAMBIÉN SE CONVIERT EN string
                     res.status(201).json({token});
                 }
             });

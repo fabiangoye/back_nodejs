@@ -1,6 +1,9 @@
+//importando dependencias
+require('dotenv').config();// busca en el archivo .env y configura las variables de entorno
 const express = require('express'); // importando express
 /***configurando express***/
 const morgan = require('morgan');
+//importando módulos
 const UserRouter = require('./routers/userRouter');//relacionando ruta UserRouter 
 const ConnDb = require('./database/connDb');
 
