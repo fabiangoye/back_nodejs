@@ -1,4 +1,5 @@
 const { Router } = require('express');//constante representando express, {Router} es una desestructuración de la clase Router de express
+const UserController = require('../controllers/userController');
 
 // la clase que contiene toda la representación de la ruta
  class UserRouter{
@@ -10,7 +11,11 @@ const { Router } = require('express');//constante representando express, {Router
 
      //metodo de configuración de rutas
      config(){
-         this.router.get('/users', (req, res) => {//los parametros de get son (ruta, funcion que se ejecuta)
+
+        const userC = new UserController
+        this.router.post('/users', userC.register);
+
+         /*this.router.get('/users', (req, res) => {//los parametros de get son (ruta, funcion que se ejecuta)
             res.status(200).json(
                  [{name:'Fabian', lastname:'Goyeneche'}, 
                  {name:'Ava', lastname:'Addams'}]);      
@@ -21,7 +26,7 @@ const { Router } = require('express');//constante representando express, {Router
             console.log("name: ", name);
             console.table(req.body);
             res.status(201).json({message: 'user created'}); //respuesta al cliente, acá finaliza el proceso, el response es como el return de una función
-         })
+         })*/
      }
  }
 
