@@ -43,20 +43,17 @@ class UserController {
 
     }
 
-    update(req, res){
-        ///Capturar el barer token de la cabecera
-        let authorization = req.headers.authorization;
-        //Realizar split para eliminar los espacios (crea arreglo)
-        let token = authorization.split(" ")[1];// token es la posicion 1, la 0 es Bearer
+    /*update(req, res){
+      
         /*console.log("----------------------Bearer token-----------------");
         console.log(arrayAuth[1]);
         console.log("---------------------------------------------------")*/
-        jwt.verify(token, process.env.NODE_PRIVATE_KEY, (error, decode)=>{//arrow function recibe como parámetros el error y el decode; la decodificación
+       /* jwt.verify(token, process.env.NODE_PRIVATE_KEY, (error, decode)=>{//arrow function recibe como parámetros el error y el decode; la decodificación
             console.log("Decode:");
             console.log(decode);// el decode es el id del objeto en la db
 
         })
         res.status(200).json({info: 'Datos actualizados'});
-    }
+    }*/
 }
 module.exports = UserController;

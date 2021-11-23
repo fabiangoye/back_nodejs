@@ -1,4 +1,4 @@
-const {Schema , model} = require('mongoose');
+const { Schema , model} = require('mongoose');
 
 const productSchema = Schema({
     name:{
@@ -6,9 +6,12 @@ const productSchema = Schema({
     },
     price: {
         type: Number
+    },
+    user_id: {
+        type: String
     }
 }, {
-    collection = 'product'
+    collection: 'products'
 });
 
-module,exports = model('Product', productSchema);
+module.exports = model('Product', productSchema);

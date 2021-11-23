@@ -6,6 +6,8 @@ const morgan = require('morgan');
 //importando módulos
 const UserRouter = require('./routers/userRouter');//relacionando ruta UserRouter 
 const ConnDb = require('./database/connDb');
+const ProductRouter = require('./routers/productRouter');
+
 
 
 
@@ -37,12 +39,14 @@ class Server {// representa al servidor, hace referencia
  
          }); 
          let userR = new UserRouter();//con () acá se esta llamado al método constructor de la clase UserRouter 
- 
+         let productR = new ProductRouter();
  
          //------------------------------------------añadir ruta a express------------------------------------------
          this.app.use(router);
          this.app.use(userR.router);// se coloca userR.router y no userR.config por que el index.js necesita el objeto router
- 
+         this.app.use(productR.router);
+
+
          //levantar/poner a la escucha al servidor
          this.app.listen(this.app.get('PORT'), ()=>{// listen recibe dos parámetros, el puerto y una función, que es opciona, y que se ejecuta al momento de levantar el servidor
  
