@@ -7,6 +7,9 @@ const productSchema = Schema({
     price: {
         type: Number
     },
+    url_img: {
+        type: String
+    },
     user_id: {
         type: String
     }
