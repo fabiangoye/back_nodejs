@@ -3,6 +3,8 @@ require('dotenv').config();// busca en el archivo .env y configura las variables
 const express = require('express'); // importando express
 /***configurando express***/
 const morgan = require('morgan');
+const cors = require('cors');
+
 //importando módulos
 const UserRouter = require('./routers/userRouter');//relacionando ruta UserRouter 
 const ConnDb = require('./database/connDb');
@@ -25,6 +27,9 @@ class Server {// representa al servidor, hace referencia
 
          // indicar el uso de morgan para el monitoreo de las peticiones http
          this.app.use(morgan());
+
+         //permitir conexiones de origen cruzado
+         this.app.use(cors(''))//se indica la url de conexión (el dominio) cuando el proyecto esté en producción 
  
          //configurar/almacenar el puerto por el que correrá el servidor
          this.app.set('PORT', process.env.PORT || 3000); // si existe la variable de entorno PORT se usa esta, si no se usa el 3000

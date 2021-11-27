@@ -70,9 +70,9 @@ class ProductController{
                 res.status(500).json({error});
             }else{
                 if(doc){
-                    res.status(200).json({info: 'Producto eliminado'})
+                    res.status(200).json({remove: true})
                 }else{
-                    res.status(200).json({info: 'No se eliminó ningún producto'})    
+                    res.status(200).json({remove: false})    
                 }
             }
 

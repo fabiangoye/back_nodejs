@@ -1,6 +1,17 @@
 const jwt = require('jsonwebtoken');
 
 class TokenController {
+
+    verifyAuth = (req, res, next) =>{
+        //Obtener token
+        let token = this.getToken(req);
+        // verificar token
+        jwt.verify(token, process.env.NODE_PRIVATE_KEY, (error, decode)=> {
+            error ? res.status(401).json({info: 'Usuario no autenticado'}) : next()
+        });
+
+    }
+
     //Properties Initializer
     getToken = (req) =>{
         let token = null;
