@@ -13,8 +13,8 @@ const UserController = require('../controllers/userController');
      config(){
 
         const userC = new UserController
-        this.router.post('/users', userC.register);
-        this.router.post('/users/auth', userC.login);
+        this.router.post('/user', userC.register);
+        this.router.post('/user/auth', userC.login);
         //this.router.put('/users', userC.update);
 
          /*this.router.get('/users', (req, res) => {//los parametros de get son (ruta, funcion que se ejecuta)

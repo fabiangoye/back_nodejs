@@ -10,7 +10,7 @@ const productSchema = Schema({
     url_img: {
         type: String
     },
-    user_id: {
+    user_id: {//se añade automaticamente con el _id del objeto json q se almacena en db
         type: String
     }
 }, {

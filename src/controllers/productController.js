@@ -55,9 +55,30 @@ class ProductController{
          * Segundo parámetro: ( {name, price} ): Campos/valores a actualizar en el documento
          * Tercer parámetro ( (error, doc)=>{} ): callback, función a ejecutarse cuando se envia la petición
          * *****/
-        Product.findOneAndUpdate({_id: id, user_id}, {name, price, url_img}, (error, doc)=>{
+        Product.findOneAndUpdate({_id: id, user_id}, {name, price, url_img}, (error, doc)=>{//_id es el id generado automáticamente
             error ? res.status(500).json({error}) : res.status(200).json({info: 'Producto actualizado'});
         });
+    }
+
+    delete = (req, res) => {
+        let {id} = req.body;//id que llega en el body
+        let token = this.tokenC.getToken(req);
+        let decode = jwt.decode(token, process.env.NODE_PRIVATE_KEY);
+        let user_id = decode.id
+        Product.findOneAndRemove({_id: id, user_id}, (error, doc) =>{
+            if(error){
+                res.status(500).json({error});
+            }else{
+                if(doc){
+                    res.status(200).json({info: 'Producto eliminado'})
+                }else{
+                    res.status(200).json({info: 'No se eliminó ningún producto'})    
+                }
+            }
+
+         
+        });
+
     }
 
 }
